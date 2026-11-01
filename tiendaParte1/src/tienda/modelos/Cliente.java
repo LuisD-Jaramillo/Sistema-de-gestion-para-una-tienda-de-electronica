@@ -34,7 +34,7 @@ public class Cliente extends Persona{
         }
     }    
     @Override
-    public void mostrarInfomacion(){
+    public void mostrarInformación(){
         System.out.println("------------------------------------");
         System.out.println("Tipo: Cliente");
         System.out.println("Cédula: "+cedula);
