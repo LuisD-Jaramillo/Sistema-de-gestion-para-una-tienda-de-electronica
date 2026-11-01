@@ -37,7 +37,7 @@ public class Proveedor extends Persona {
         }
     }    
     @Override
-    public void mostrarInfomacion(){
+    public void mostrarInformación(){
         System.out.println("------------------------------------");
         System.out.println("Tipo: Proveedor");
         System.out.println("Cédula: "+cedula);
