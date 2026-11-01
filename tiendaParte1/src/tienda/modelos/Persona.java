@@ -54,5 +54,5 @@ public abstract class Persona {
             System.out.println("Telefono debe tener 9 digitos");
         }
     }
-    public abstract void mostrarInfomacion();
+    public abstract void mostrarInformacion();
 }
