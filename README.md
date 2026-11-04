@@ -64,10 +64,3 @@ Sistema-de-gestion-para-una-tienda-de-electronica/
 | Inventario y bodega | Implementado (matriz `Componente[][]`, stock, búsqueda, mapa) y conectado al menú |
 | Componentes (clase base y subclases) | Implementado |
 
-## Pendientes
-
-- [ ] Conectar al menú los módulos de usuarios, alquileres, reabastecimiento y ventas
-- [ ] Agregar `listaVentas` y `listaOrdenes` y sus métodos en `SistemaTiendaElectronica`
-- [ ] Implementar `generarReporteGeneral()`
-- [ ] Hacer que los constructores de `Persona` usen los setters para validar los datos
-- [ ] Ajustar los recargos de `calcularPrecioFinal()` (hoy 20 % en activos y 10 % en pasivos, valores supuestos)
