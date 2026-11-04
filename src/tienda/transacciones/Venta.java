@@ -1,13 +1,18 @@
-import java.util.ArrayList;
+package tienda.transacciones;
 
-public class Venta implements ICalculable{
+import java.util.ArrayList;
+import tienda.interfaces.ICalculable;
+import tienda.modelos.Cliente;
+import tienda.modelos.Componente;
+
+public class Venta implements ICalculable {
     //Atributos
     private String idVenta;
     private Cliente cliente;
     private ArrayList<DetalleTransaccion> detalles;
-    
+
     //Constructor
-    public Venta(String idVenta, Cliente cliente){
+    public Venta(String idVenta, Cliente cliente) {
         this.idVenta = idVenta;
         this.cliente = cliente;
         this.detalles = new ArrayList<>();
@@ -28,20 +33,19 @@ public class Venta implements ICalculable{
     
     //Metodos
     public void agregarDetalle(Componente componente, int cantidad) {
-        double precioUnitario = componente.calcularPrecioFinal();
-        
-        DetalleTransaccion detalle = new DetalleTransaccion(componente, cantidad, precioUnitario);
-        detalles.add(detalle);
+        if (componente != null && cantidad > 0) {
+            double precioUnitario = componente.calcularPrecioFinal();
+            DetalleTransaccion detalle = new DetalleTransaccion(componente, cantidad, precioUnitario);
+            detalles.add(detalle);
+        }
     }
-    
+
     @Override
     public double calcularPrecioFinal() {
         double total = 0;
-        
-        for (DetalleTransaccion detalle : detalles){
+        for (DetalleTransaccion detalle : detalles) {
             total += detalle.calcularSubtotal();
         }
-        
         return total;
     }
 }

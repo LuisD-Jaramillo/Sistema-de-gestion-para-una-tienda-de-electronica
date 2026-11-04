@@ -1,3 +1,7 @@
+package tienda.transacciones;
+
+import tienda.modelos.Componente;
+
 public class DetalleTransaccion {
     //Atributos
     private Componente componente;
