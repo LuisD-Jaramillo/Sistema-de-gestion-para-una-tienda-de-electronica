@@ -53,6 +53,7 @@ Sistema-de-gestion-para-una-tienda-de-electronica/
         └── RegistroAlquiler.java
 ```
 ##UML
+
 ```mermaid
 classDiagram
 
@@ -192,7 +193,7 @@ SistemaTiendaElectronica o-- "*" Proveedor : gestiona
 SistemaTiendaElectronica o-- "*" Venta : procesa
 SistemaTiendaElectronica o-- "*" RegistroAlquiler : procesa
 SistemaTiendaElectronica o-- "*" OrdenReabastecimiento : procesa
-
+```
 ## Estado actual
 
 | Módulo | Estado |
