@@ -204,14 +204,5 @@ SistemaTiendaElectronica o-- "*" Venta : procesa
 SistemaTiendaElectronica o-- "*" RegistroAlquiler : procesa
 SistemaTiendaElectronica o-- "*" OrdenReabastecimiento : procesa
 ```
-## Estado actual
 
-| Módulo | Estado |
-|---|---|
-| Clientes y proveedores (registro y búsqueda) | Implementado |
-| Ventas y detalles de transacción | Clases listas; falta `registrarVenta` en el sistema |
-| Órdenes de reabastecimiento | Clase lista; faltan `crearOrdenReabastecimiento` y `procesarOrdenRecibida` |
-| Alquileres y devoluciones | Implementado en el sistema; falta conectarlo al menú |
-| Inventario y bodega | Implementado (matriz `Componente[][]`, stock, búsqueda, mapa) y conectado al menú |
-| Componentes (clase base y subclases) | Implementado |
 
