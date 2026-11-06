@@ -2,8 +2,6 @@
 
 Aplicación en Java (proyecto NetBeans) para gestionar una tienda de electrónica: clientes, proveedores, inventario, ventas, alquileres y reabastecimiento.
 
-> **Estado:** en desarrollo. El proyecto compila y se puede ejecutar; el menú principal ya permite gestionar el inventario y la bodega. Los módulos de usuarios, alquileres, reabastecimiento y ventas aún no están conectados al menú.
-
 ## Reparto del trabajo
 
 | Persona | Parte |
@@ -17,12 +15,24 @@ Aplicación en Java (proyecto NetBeans) para gestionar una tienda de electrónic
 - JDK 25 (configurado en `javac.source` y `javac.target` de `nbproject/project.properties`)
 - Apache NetBeans (o Ant, ya que el proyecto incluye `build.xml`)
 
-## Cómo abrirlo
+## Instrucciones de Ejecución y Uso
 
-1. Clona el repositorio.
-2. En NetBeans: **File → Open Project** y selecciona la carpeta del repositorio (la raíz es el proyecto).
-3. La clase principal es `tienda.Main`.
+### 1. Compilación y Ejecución
+1. Clona el repositorio a tu equipo local.
+2. Abre Apache NetBeans y selecciona **File → Open Project**[cite: 1].
+3. Elige la carpeta raíz del proyecto[cite: 1].
+4. Ejecuta el proyecto presionando `F6` o haciendo clic derecho sobre la clase `tienda.Main` → **Run File**[cite: 1].
 
+### 2. Flujo de Uso en Consola
+1. **Configuración inicial:** Al arrancar por primera vez, el sistema solicitará ingresar el nombre de la tienda y las dimensiones de la bodega (filas y columnas) para inicializar la matriz[cite: 4].
+2. **Navegación:** Utiliza el teclado para ingresar el número de la opción deseada en el menú principal (1 al 6) y presiona `Enter`[cite: 4].
+3. **Módulos:**
+   - **Opción 1 (Inventario):** Permite registrar componentes (activos/pasivos), actualizar stock, buscar e imprimir el mapa visual de bodega[cite: 4].
+   - **Opción 2 (Usuarios):** Registro y consulta de clientes y proveedores[cite: 4].
+   - **Opción 3 (Préstamos, Devoluciones y Ventas):** Gestión transaccional con clientes[cite: 4].
+   - **Opción 4 (Reabastecimiento):** Creación y procesamiento de órdenes de compra a proveedores[cite: 4].
+   - **Opción 5 (Reportes):** Consultas generales de inventario y alertas de stock crítico[cite: 4].
+     
 ## Estructura del proyecto
 
 ```
@@ -52,7 +62,7 @@ Sistema-de-gestion-para-una-tienda-de-electronica/
         ├── OrdenReabastecimiento.java
         └── RegistroAlquiler.java
 ```
-##UML
+## UML
 
 ```mermaid
 classDiagram
