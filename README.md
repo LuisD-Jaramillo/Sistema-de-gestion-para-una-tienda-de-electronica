@@ -52,6 +52,146 @@ Sistema-de-gestion-para-una-tienda-de-electronica/
         ├── OrdenReabastecimiento.java
         └── RegistroAlquiler.java
 ```
+##UML
+```mermaid
+classDiagram
+
+%% 1. INTERFACES
+class IPrestable {
+    <<interface>>
+    +prestar(dias: int) boolean
+    +devolver() boolean
+    +estaDisponible() boolean
+    +esTarjetaDeDatos() boolean
+}
+
+class ICalculable {
+    <<interface>>
+    +calcularPrecioFinal() double
+}
+
+%% 2. PERSONAS
+class Persona {
+    <<abstract>>
+    #cedula: String
+    #nombre: String
+    #telefono: String
+    +mostrarInformacion()* void
+}
+
+class Cliente {
+    -correo: String
+    -saldoCredito: double
+    +mostrarInformacion() void
+}
+
+class Proveedor {
+    -empresa: String
+    -RUC: String
+    +mostrarInformacion() void
+}
+
+%% 3. COMPONENTES
+class Componente {
+    <<abstract>>
+    #codigo: String
+    #nombre: String
+    #precioBase: double
+    #stock: int
+    #categoriasCompatibles: String[]
+    +obtenerDetalleTecnico()* String
+    +calcularPrecioFinal()* double
+}
+
+class ComponentePasivo {
+    -tolerancia: double
+    -potenciaWatts: double
+    +obtenerDetalleTecnico() String
+    +calcularPrecioFinal() double
+}
+
+class ComponenteActivo {
+    -voltajeOperacion: double
+    -prestado: boolean
+    -TARJETAS_PERMITIDAS: String[]$
+    +esTarjetaDeDatos() boolean
+    +prestar(dias: int) boolean
+    +devolver() boolean
+    +estaDisponible() boolean
+    +obtenerDetalleTecnico() String
+    +calcularPrecioFinal() double
+}
+
+%% 4. TRANSACCIONES
+class DetalleTransaccion {
+    -cantidad: int
+    -precioUnitario: double
+    +calcularSubtotal() double
+}
+
+class Venta {
+    -idVenta: String
+    +agregarDetalle(componente: Componente, cantidad: int) void
+    +calcularPrecioFinal() double
+}
+
+class RegistroAlquiler {
+    -idAlquiler: String
+    -diasAlquilados: int
+    -devuelto: boolean
+    -recargoMora: double
+    -tarifaDiaria: double
+    +registrarDevolucion(diasRetraso: int, costoDiaMora: double) double
+    +calcularPrecioFinal() double
+}
+
+class OrdenReabastecimiento {
+    -idOrden: String
+    -procesada: boolean
+    +agregarItem(componente: Componente, cantidad: int, costoCompra: double) void
+    +procesarOrden() void
+}
+
+%% 5. SISTEMA
+class SistemaTiendaElectronica {
+    -nombreTienda: String
+    -inventarioBodega: Componente[][]
+    +registrarComponente(c: Componente, fila: int, columna: int) void
+    +actualizarStock(codigo: String, nuevoStock: int) boolean
+    +buscarComponente(codigo: String) Componente
+    +mostrarMapaBodega() void
+    +generarReporteGeneral() void
+}
+
+%% RELACIONES DE HERENCIA
+Persona <|-- Cliente
+Persona <|-- Proveedor
+Componente <|-- ComponentePasivo
+Componente <|-- ComponenteActivo
+
+%% REALIZACIÓN DE INTERFACES
+ICalculable <|.. Componente
+ICalculable <|.. Venta
+ICalculable <|.. RegistroAlquiler
+IPrestable <|.. ComponenteActivo
+
+%% RELACIONES DE ASOCIACIÓN Y COMPOSICIÓN
+DetalleTransaccion --> "1" Componente : referencia
+Venta --> "1" Cliente : realizada a
+Venta *-- "1..*" DetalleTransaccion : contiene
+
+RegistroAlquiler --> "1" Cliente : solicitado por
+RegistroAlquiler --> "1" ComponenteActivo : alquila
+
+OrdenReabastecimiento --> "1" Proveedor : solicitada a
+OrdenReabastecimiento *-- "1..*" DetalleTransaccion : contiene
+
+SistemaTiendaElectronica *-- "1..*" Componente : inventario
+SistemaTiendaElectronica o-- "*" Cliente : gestiona
+SistemaTiendaElectronica o-- "*" Proveedor : gestiona
+SistemaTiendaElectronica o-- "*" Venta : procesa
+SistemaTiendaElectronica o-- "*" RegistroAlquiler : procesa
+SistemaTiendaElectronica o-- "*" OrdenReabastecimiento : procesa
 
 ## Estado actual
 
